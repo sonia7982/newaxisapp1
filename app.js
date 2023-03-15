@@ -5,8 +5,13 @@ var mongoose = require('mongoose')
 const CardModal = require('./models/CardData')
 
 try {
-  mongoose.connect(process.env.DBURL)
-  console.log('Mongo connected')
+  mongoose.connect(
+    process.env.DBURL,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
 } catch(error) {
   console.log(error)
   process.exit()
