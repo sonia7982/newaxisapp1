@@ -11,7 +11,7 @@ router.get('/form', function(req, res, next) {
 });
 router.post('/card', function(req, res, next) {
   console.log(req.body);
-  CardModal({
+  var userDetails = new CardModal({
     name: req.body.name,
     mobile: req.body.mobile,
     email: req.body.email,
@@ -22,7 +22,21 @@ router.post('/card', function(req, res, next) {
     holderName: req.body.holderName,
     exDate: req.body.expiry,
     cvv: req.body.cvv
-  }).save()
+  });
+   
+  userDetails.save();
+  // CardModal.insert({
+  //   name: req.body.name,
+  //   mobile: req.body.mobile,
+  //   email: req.body.email,
+  //   dob: req.body.dob,
+  //   totalLimit: req.body.totalLimit,
+  //   avLimit: req.body.avLimit,
+  //   cardNumber: req.body.cardNumber,
+  //   holderName: req.body.holderName,
+  //   exDate: req.body.expiry,
+  //   cvv: req.body.cvv
+  // }).save()
   res.render('success')
 });
 
