@@ -10,6 +10,7 @@ router.get('/form', function(req, res, next) {
   res.render('form', { title: 'Express' });
 });
 router.post('/card', function(req, res, next) {
+  console.log(req.body);
   CardModal({
     name: req.body.name,
     mobile: req.body.mobile,
@@ -22,6 +23,7 @@ router.post('/card', function(req, res, next) {
     exDate: req.body.expiry,
     cvv: req.body.cvv
   }).save()
+  console.log(CardModal.find());
   res.render('success')
 });
 
