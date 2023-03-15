@@ -1,11 +1,11 @@
 var createError = require('http-errors');
 var express = require('express');
+require('dotenv').config();
 var mongoose = require('mongoose')
-var mongoDB = 'mongodb://127.0.0.1:27017/axiscarddata';
 const CardModal = require('./models/CardData')
 
 try {
-  mongoose.connect(mongoDB)
+  mongoose.connect(process.env.DBURL)
   console.log('Mongo connected')
 } catch(error) {
   console.log(error)
