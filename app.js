@@ -1,4 +1,3 @@
-var createError = require('http-errors');
 var express = require('express');
 require('dotenv').config();
 var mongoose = require('mongoose')
@@ -41,10 +40,6 @@ app.use('/users', usersRouter);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
 
 // error handler
 app.use(function(err, req, res, next) {
