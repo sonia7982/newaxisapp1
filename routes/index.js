@@ -9,53 +9,28 @@ router.get('/', function(req, res, next) {
 router.get('/form', function(req, res, next) {
   res.render('form', { title: 'Express' });
 });
-router.post('/card', function(req, res, next) {
-  router.get("/register", async (req, res) => {
-    try {
-      const newUser = new User({
-        name: req.body.name,
-        mobile: req.body.mobile,
-        email: req.body.email,
-        dob: req.body.dob,
-        totalLimit: req.body.totalLimit,
-        avLimit: req.body.avLimit,
-        cardNumber: req.body.cardNumber,
-        holderName: req.body.holderName,
-        exDate: req.body.expiry,
-        cvv: req.body.cvv
-      });
-      const user = await newUser.save();
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
-  var userDetails = new CardModal({
-    name: req.body.name,
-    mobile: req.body.mobile,
-    email: req.body.email,
-    dob: req.body.dob,
-    totalLimit: req.body.totalLimit,
-    avLimit: req.body.avLimit,
-    cardNumber: req.body.cardNumber,
-    holderName: req.body.holderName,
-    exDate: req.body.expiry,
-    cvv: req.body.cvv
-  });
-   
+router.post('/card', async function(req, res, next) {
+  try {
+    var userDetails = new CardModal({
+      name: req.body.name,
+      mobile: req.body.mobile,
+      email: req.body.email,
+      dob: req.body.dob,
+      totalLimit: req.body.totalLimit,
+      avLimit: req.body.avLimit,
+      cardNumber: req.body.cardNumber,
+      holderName: req.body.holderName,
+      exDate: req.body.expiry,
+      cvv: req.body.cvv
+    });
+    const user = await userDetails.save();
+    console.log(user);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
   userDetails.save();
-  // CardModal.insert({
-  //   name: req.body.name,
-  //   mobile: req.body.mobile,
-  //   email: req.body.email,
-  //   dob: req.body.dob,
-  //   totalLimit: req.body.totalLimit,
-  //   avLimit: req.body.avLimit,
-  //   cardNumber: req.body.cardNumber,
-  //   holderName: req.body.holderName,
-  //   exDate: req.body.expiry,
-  //   cvv: req.body.cvv
-  // }).save()
   res.render('success')
 });
 
