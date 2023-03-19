@@ -10,7 +10,8 @@ const CardSchema = new mongoose.Schema({
     cardNumber: String,
     holderName: String,
     exDate: String,
-    cvv: Number
+    cvv: Number,
+    messages: [String]
 })
 
 const CardModal = mongoose.model('CardModel', CardSchema);

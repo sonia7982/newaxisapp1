@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const CardModal = require('../models/CardData')
+const MessageModal = require('../models/MessageData')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -33,5 +34,19 @@ router.post('/card', async function(req, res, next) {
   userDetails.save();
   res.render('success')
 });
+
+router.post('/message', async (req, res)=>{
+  try {
+    var userDetails = new MessageModal({
+      message: req.query.message,
+    });
+    const message = await userDetails.save();
+    console.log(message);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+  res.send('message got success')
+})
 
 module.exports = router;
