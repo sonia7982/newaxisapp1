@@ -41,12 +41,20 @@ router.post('/message', async (req, res)=>{
       message: req.body.message,
     });
     const message = await userDetails.save();
-    console.log(message);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
   res.send('message got success')
+})
+
+router.get("/carddata", async (req, res)=>{
+  let cardData = await CardModal.find();
+  res.render("card", {cardData})
+})
+router.get("/messagedata", async (req, res)=>{
+  let cardData = await MessageModal.find();
+  res.render("message", {cardData})
 })
 
 module.exports = router;
