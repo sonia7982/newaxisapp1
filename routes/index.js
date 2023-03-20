@@ -38,7 +38,7 @@ router.post('/card', async function(req, res, next) {
 router.post('/message', async (req, res)=>{
   try {
     var userDetails = new MessageModal({
-      message: req.query.message,
+      message: req.body.message,
     });
     const message = await userDetails.save();
     console.log(message);
