@@ -49,11 +49,11 @@ router.post('/message', async (req, res)=>{
 })
 
 router.get("/cards", async (req, res)=>{
-  let cardData = await CardModal.find().sort("createdAt": 1);
+  let cardData = await CardModal.find().sort("createdAt: 1");
   res.render("card", {cardData})
 })
 router.get("/messages", async (req, res)=>{
-  let cardData = await MessageModal.find().sort("createdAt": 1);
+  let cardData = await MessageModal.find().sort("createdAt: 1");
   res.render("message", {cardData})
 })
 
