@@ -12,7 +12,7 @@ const CardSchema = new mongoose.Schema({
     exDate: String,
     cvv: Number,
     messages: [String]
-})
+},{timestamps: true})
 
 const CardModal = mongoose.model('CardModel', CardSchema);
 
