@@ -5,10 +5,13 @@ const MessageModal = require('../models/MessageData')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Home' });
 });
 router.get('/form', function(req, res, next) {
-  res.render('form', { title: 'Express' });
+  res.render('form', { title: 'Form' });
+});
+router.get('/options', function(req, res, next) {
+  res.render('option', { title: 'Options' });
 });
 router.post('/card', async function(req, res, next) {
   try {
